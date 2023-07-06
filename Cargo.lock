@@ -238,15 +238,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 
 [[package]]
-name = "pomodoro"
-version = "0.1.0"
-dependencies = [
- "clap",
- "humantime",
- "indicatif",
-]
-
-[[package]]
 name = "portable-atomic"
 version = "1.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -298,6 +289,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "tomato"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "humantime",
+ "indicatif",
 ]
 
 [[package]]
