@@ -9,6 +9,7 @@ impl std::fmt::Display for State {
             State::Work => "Working",
             State::Rest => "Resting",
         };
+
         write!(f, "{}", state)
     }
 }

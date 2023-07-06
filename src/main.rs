@@ -7,6 +7,7 @@ use cli::Args;
 use state::State;
 use std::process::Command;
 use timer::run_timer;
+
 fn main() {
     let Args { rest, work, vox } = Args::parse();
     let mut state = State::Work;
