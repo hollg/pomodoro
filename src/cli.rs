@@ -1,8 +1,8 @@
 use clap::Parser;
 use humantime::Duration;
 
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
+#[derive(Parser)]
+#[command(version = "1.0", about = "A basic command line pomodoro timer")]
 pub struct Args {
     /// Length of the work period in human-readable format, e.g. "20min", "1hr 30min" etc
     ///
