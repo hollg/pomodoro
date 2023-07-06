@@ -1,6 +1,6 @@
 # Pomodoro
 
-A simple [pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) timer.
+A simple command line [pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) timer.
 
 ## Installation
 
