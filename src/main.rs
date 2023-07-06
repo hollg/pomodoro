@@ -20,6 +20,7 @@ fn main() {
             State::Work => work_seconds,
             State::Rest => rest_seconds,
         };
+
         run_timer(time, &state);
         state.toggle();
     }

@@ -31,13 +31,13 @@ pub fn run_timer(seconds: u64, state: &State) {
 
     let mut seconds_left = seconds;
 
-    progress_bar.track_time(seconds_left, &state);
+    progress_bar.track_time(seconds_left, state);
 
     for second in 0..seconds {
         seconds_left = seconds - second;
 
         progress_bar.set_position(second);
-        progress_bar.track_time(seconds_left, &state);
+        progress_bar.track_time(seconds_left, state);
 
         std::thread::sleep(std::time::Duration::from_secs(1));
     }
