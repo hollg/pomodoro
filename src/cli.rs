@@ -14,4 +14,8 @@ pub struct Args {
     /// Defaults to 5 minutes
     #[arg(short, long, default_value = "5 minutes")]
     pub rest: Duration,
+
+    /// Announce beginning of each new work / rest period
+    #[arg(short, long)]
+    pub vox: bool,
 }

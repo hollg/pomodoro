@@ -1,7 +1,6 @@
 use indicatif::{ProgressBar, ProgressStyle};
 
 use crate::state::State;
-
 trait TrackTime {
     fn track_time(&mut self, seconds_left: u64, state: &State);
 }
