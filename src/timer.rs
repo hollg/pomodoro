@@ -1,11 +1,11 @@
 use indicatif::{ProgressBar, ProgressStyle};
 
 use crate::state::State;
-trait TrackTime {
+trait TimeTracker {
     fn track_time(&mut self, seconds_left: u64, state: &State);
 }
 
-impl TrackTime for ProgressBar {
+impl TimeTracker for ProgressBar {
     fn track_time(&mut self, seconds_left: u64, state: &State) {
         let mins_left = seconds_left / 60;
         if mins_left >= 1 {
