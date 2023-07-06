@@ -2,8 +2,23 @@ use indicatif::{ProgressBar, ProgressStyle};
 
 use crate::state::State;
 
+trait TrackTime {
+    fn track_time(&mut self, seconds_left: u64, state: &State);
+}
+
+impl TrackTime for ProgressBar {
+    fn track_time(&mut self, seconds_left: u64, state: &State) {
+        let mins_left = seconds_left / 60;
+        if mins_left >= 1 {
+            self.set_message(format!("{} for {} minutes", state, mins_left));
+        } else {
+            self.set_message(format!("{} for {} seconds", state, seconds_left))
+        }
+    }
+}
+
 pub fn run_timer(seconds: u64, state: &State) {
-    let progress_bar = ProgressBar::new(seconds)
+    let mut progress_bar = ProgressBar::new(seconds)
         .with_style(
             ProgressStyle::default_bar()
                 .template(
@@ -16,24 +31,14 @@ pub fn run_timer(seconds: u64, state: &State) {
 
     let mut seconds_left = seconds;
 
-    update_progress_bar_message(&progress_bar, seconds_left, &state);
+    progress_bar.track_time(seconds_left, &state);
 
     for second in 0..seconds {
-        progress_bar.set_position(second);
-
         seconds_left = seconds - second;
 
-        update_progress_bar_message(&progress_bar, seconds_left, &state);
+        progress_bar.set_position(second);
+        progress_bar.track_time(seconds_left, &state);
 
         std::thread::sleep(std::time::Duration::from_secs(1));
-    }
-}
-
-fn update_progress_bar_message(progress_bar: &ProgressBar, seconds_left: u64, state: &State) {
-    let mins_left = seconds_left / 60;
-    if mins_left >= 1 {
-        progress_bar.set_message(format!("{} for {} minutes", state, mins_left));
-    } else {
-        progress_bar.set_message(format!("{} for {} seconds", state, seconds_left))
     }
 }
